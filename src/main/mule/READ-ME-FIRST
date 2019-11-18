@@ -1,0 +1,52 @@
+Hi! 
+
+Thanks for using this template, to finish the setup please follow these steps:
+
+######## APP NAME: ########
+
+* Change the name of this project following the correct syntax:
+* Type of API:
+   - sapi: System API
+   - papi: Process API
+   - xapi: Experience API
+   
+ * Name of the API:
+   - all lower case
+   - no special characters, only a-z and 0-9
+   - No spaces, use dashes
+   - Be as descriptive as possible about what the API does
+   
+ * Examples:
+ 	- sapi-salesforce-database-access
+ 	- xapi-web-portal-user-login  
+
+
+######## ENCRYPTION: ########
+
+* Create a 128bits encryption key: https://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
+* Declare the variable "mule.vault.key=ENCRYPTIONKEY" (no quotes) as an argument
+* DO NOT put the encryption key in any file on the project. Once deployed declare the encryption key variable on CloudHub
+* NO NOT commit the encryption key.
+* Encrypt any value on the secure.XXX.yaml files using the "secure-properties-tool.jar" file (not included on this template)
+* Remember to declare the same variable @ CircleCI and Runtime.
+
+######## HTTPS / TLS: ########
+
+* Create the keystore.jks file using the pkcs12 format
+* Move the file to the src/main/resources folder on the project
+* Configure HTTP and TLS using the keystore
+* DONT put the keystore password on any file, use arguments and variables on runtime. 
+
+######## CIRCLE CI: ########
+
+Take a moment to update the pom.xml file and update the following items:
+* Anypoint Platform Bussines group ID (line 47)
+* Encryption Key VARIABLE name that should be declared in circle CI (line 59)
+* Anypoint Platform Client ID and Secret VARIABLE name that should be declared in circle CI. (lines 66 and 67)
+
+Open the .circleci/config.xml file and edit the name of application to match with the one you setup before.
+* Replace the lines " # APPLICATION_NAME: CONFIGURE-ME" with  APPLICATION_NAME: sapi-muletemplate for example. Yes, remove the hashtag
+
+
+
+Thanks!
