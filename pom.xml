@@ -3,7 +3,6 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.demo.app</groupId>
-
   <artifactId>demo-api-app-x7pljznb6xl12gh6</artifactId>
   <version>1.0.0</version>
   <packaging>mule-application</packaging>
