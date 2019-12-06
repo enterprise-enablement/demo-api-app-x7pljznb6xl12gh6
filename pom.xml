@@ -80,7 +80,7 @@
               <mule.env>${env.MULE_ENV}</mule.env>
               <encryption.key>${env.ENCRYPTION_KEY}</encryption.key>
               <ap.user>${env.ANYPOINT_PLATFORM_USER}</ap.user>
-              <ap.pass>${env.ANYPOINT_PLATFORM_USER}</ap.pass>
+              <ap.pass>${env.ANYPOINT_PLATFORM_PASSWORD}</ap.pass>
             </properties>
           </cloudHubDeployment>
         </configuration>
