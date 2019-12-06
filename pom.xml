@@ -69,7 +69,7 @@
             <password>${env.ANYPOINT_PLATFORM_PASSWORD}</password>
             <environment>${env.DEPLOYMENT_ENVIRONMENT}</environment>
             <workerType>${deployment.worker.type}</workerType>
-            <applicationName>${env.APPLICATION_NAME}</applicationName>
+            <applicationName>demo-api-app-x7pljznb6xl12gh6</applicationName>
             <skipDeploymentVerification>true</skipDeploymentVerification>
             <properties>
               <anypoint.platform.analytics_base_uri>https://analytics-ingest.anypoint.mulesoft.com</anypoint.platform.analytics_base_uri>
@@ -79,6 +79,8 @@
 			        <anypoint.platform.client_secret>${env.ANYPOINT_PLATFORM_CLIENT_SECRET}</anypoint.platform.client_secret>
               <mule.env>${env.MULE_ENV}</mule.env>
               <encryption.key>${env.ENCRYPTION_KEY}</encryption.key>
+              <ap.user>${env.ANYPOINT_PLATFORM_USER}</ap.user>
+              <ap.pass>${env.ANYPOINT_PLATFORM_USER}</ap.pass>
             </properties>
           </cloudHubDeployment>
         </configuration>
