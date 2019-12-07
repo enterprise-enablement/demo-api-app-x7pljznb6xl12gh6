@@ -137,8 +137,8 @@ jobs:
           name: Add Secrets To Project
           command: |
             # Create Properties file and add keystore password
-            touch ./src/main/resources/temp-local.properties.yaml
-            echo "keystore.password: \"${KEYSTORE_PASS}\"" >> ./src/main/resources/temp-local.properties.yaml
+            touch ./src/main/resources/temp-secure.properties.yaml
+            echo "keystore.password: \"${KEYSTORE_PASS}\"" >> ./src/main/resources/temp-secure.properties.yaml
             echo "secrets:" >> ./src/main/resources/temp-local.properties.yaml
 
             # Get Secrets by APP Name
@@ -156,10 +156,10 @@ jobs:
               VALUE=$(echo ${SECRET_OUTPUT} | jq .${SECRET_KEY})
               TEMP="${SECRET_KEY//\"}: "${VALUE}""
               # Add to temp-Properties File
-              echo -e "  ${TEMP}" >> ./src/main/resources/temp-local.properties.yaml
+              echo -e "  ${TEMP}" >> ./src/main/resources/temp-secure.properties.yaml
             done
 
-            cat ./src/main/resources/temp-local.properties.yaml
+            cat ./src/main/resources/temp-secure.properties.yaml
 
       - run:
           name: Encrypt Secrets
