@@ -173,13 +173,13 @@ jobs:
               file encrypt \
               AES CBC \
               ${ENCRYPTION_KEY} \
-              ./src/main/resources/temp-local.properties.yaml \
-              ./src/main/resources/local.properties.yaml
+              ./src/main/resources/temp-secure.properties.yaml \
+              ./src/main/resources/secure.properties.yaml
 
             rm -f ./secure-properties-tool.jar
-            rm -f ./src/main/resources/temp-local.properties.yaml
+            rm -f ./src/main/resources/temp-secure.properties.yaml
 
-            cat ./src/main/resources/local.properties.yaml
+            cat ./src/main/resources/secure.properties.yaml
 
       - run:
           name: Update Global.xml for deployment

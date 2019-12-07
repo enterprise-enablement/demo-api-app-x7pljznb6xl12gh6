@@ -79,10 +79,6 @@
 			        <anypoint.platform.client_secret>${env.ANYPOINT_PLATFORM_CLIENT_SECRET}</anypoint.platform.client_secret>
               <mule.env>${env.MULE_ENV}</mule.env>
               <encryption.key>${env.ENCRYPTION_KEY}</encryption.key>
-              <ap.user>${env.ANYPOINT_PLATFORM_USER}</ap.user>
-              <ap.pass>${env.ANYPOINT_PLATFORM_PASSWORD}</ap.pass>
-              <mule.user>${env.MULE_USER}</mule.user>
-              <mule.pass>${env.MULE_PASS}</mule.pass>
             </properties>
           </cloudHubDeployment>
         </configuration>
