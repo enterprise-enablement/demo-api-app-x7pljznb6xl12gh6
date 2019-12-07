@@ -79,8 +79,8 @@
 			        <anypoint.platform.client_secret>${env.ANYPOINT_PLATFORM_CLIENT_SECRET}</anypoint.platform.client_secret>
               <mule.env>${env.MULE_ENV}</mule.env>
               <encryption.key>${env.ENCRYPTION_KEY}</encryption.key>
-              <id><${env.ANYPOINT_PLATFORM_CLIENT_ID}</id>
-              <id><${env.ANYPOINT_PLATFORM_CLIENT_SECRET}</id>
+              <id>${env.ANYPOINT_PLATFORM_CLIENT_ID}</id>
+              <id>${env.ANYPOINT_PLATFORM_CLIENT_SECRET}</id>
               <user>${env.ANYPOINT_PLATFORM_USER}</user>
               <pass>${env.ANYPOINT_PLATFORM_PASSWORD}</pass>
               <g_id>${env.ANYPOINT_PLATFORM_BUSINESS_GROUP_ID}</g_id>
