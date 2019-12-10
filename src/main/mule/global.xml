@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:secrets-manager-api="http://www.mulesoft.org/schema/mule/secrets-manager-api"
+<mule xmlns:demo-api-app-x7pljznb6xl12gh6="http://www.mulesoft.org/schema/mule/demo-api-app-x7pljznb6xl12gh6"
 	xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties"
 	xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:http="http://www.mulesoft.org/schema/mule/http"
 	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
@@ -9,7 +9,7 @@
 http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd
-http://www.mulesoft.org/schema/mule/secrets-manager-api http://www.mulesoft.org/schema/mule/secrets-manager-api/current/mule-secrets-manager-api.xsd">
+http://www.mulesoft.org/schema/mule/demo-api-app-x7pljznb6xl12gh6 http://www.mulesoft.org/schema/mule/demo-api-app-x7pljznb6xl12gh6/current/mule-demo-api-app-x7pljznb6xl12gh6.xsd">
 
 <!-- <api-platform-gw:api apiName="CONFIGUREME" version="${mule.env}-1.0" flowRef="api-main" create="true" apikitRef="api-config" doc:name="API Autodiscovery" /> -->
     <global-property doc:name="Global Property" name="mule.env" value="dev"/>
@@ -17,7 +17,7 @@ http://www.mulesoft.org/schema/mule/secrets-manager-api http://www.mulesoft.org/
     <http:listener-config name="HTTPS_Listener_config" doc:name="HTTP Listener config" >
       <http:listener-connection host="0.0.0.0" port="${https.port}" protocol="HTTPS"  tlsContext="TLS_Settings" />
     </http:listener-config>
-    <secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" file="local.properties.yaml" key="${encryption.key}" />
+    <secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" file="secure.properties.yaml" key="${encryption.key}" />
     
     <!-- This key only decrypts the properties file that is local to the developer machine -->
     <global-property doc:name="Global Property" name="encryption.key" value="83AVmUaiBGgT5DC+" />
