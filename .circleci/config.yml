@@ -59,7 +59,7 @@ workflows:
     jobs:
       - build_prod:
           # the context configured in CircleCI UI holding properties like the MULE_USER, MULE_PASS, PLAT_CLIENT_ID, PLAT_CLIENT_SECRET, ANYPOINT_USER, ANYPOINT_PASS
-          context: org-global
+          context: prod-org
           filters:
             branches:
               # only run "build_prod" when committing onto the master branch
@@ -67,7 +67,7 @@ workflows:
                 - master
       - build_dev:
           # the context configured in CircleCI UI holding properties like the MULE_USER, MULE_PASS, PLAT_CLIENT_ID, PLAT_CLIENT_SECRET, ANYPOINT_USER, ANYPOINT_PASS
-          context: org-global
+          context: dev-org
           filters:
             branches:
               # only run "build_dev" when committing onto the develop branch
