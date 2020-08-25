@@ -1,4 +1,4 @@
-
+  
 # Java Maven CircleCI 2.0 configuration file
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
@@ -17,11 +17,6 @@ jobs:
     steps:
       - checkout
       # run tests!
-      - run: 
-	  name: Show creds
-	  command: echo $ANYPOINT_PLATFORM_USER \
-echo $ANYPOINT_PLATFORM_PASSWORD
-	
       - run: mvn -s circleci.settings.xml -DskipTests clean package
       - run:
           name: Deploy to CloudHub Production from GitHub master branch
@@ -42,6 +37,12 @@ echo $ANYPOINT_PLATFORM_PASSWORD
 
     steps:
       - checkout
+      - run: 
+          name: User ID
+          command: echo $ANYPOINT_PLATFORM_USER
+      - run: 
+          name: User Password
+          command: echo $ANYPOINT_PLATFORM_PASSWORD
       # build cleanly
       - run: mvn -s circleci.settings.xml -DskipTests clean package
       # deploy to cloudhub
@@ -58,7 +59,7 @@ workflows:
     jobs:
       - build_prod:
           # the context configured in CircleCI UI holding properties like the MULE_USER, MULE_PASS, PLAT_CLIENT_ID, PLAT_CLIENT_SECRET, ANYPOINT_USER, ANYPOINT_PASS
-          context: prd-org
+          context: org-global
           filters:
             branches:
               # only run "build_prod" when committing onto the master branch
@@ -66,7 +67,7 @@ workflows:
                 - master
       - build_dev:
           # the context configured in CircleCI UI holding properties like the MULE_USER, MULE_PASS, PLAT_CLIENT_ID, PLAT_CLIENT_SECRET, ANYPOINT_USER, ANYPOINT_PASS
-          context: dev-org
+          context: org-global
           filters:
             branches:
               # only run "build_dev" when committing onto the develop branch
