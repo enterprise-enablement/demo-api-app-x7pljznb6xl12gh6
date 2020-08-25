@@ -72,6 +72,8 @@
             <applicationName>demo-api-app-x7pljznb6xl12gh6</applicationName>
             <skipDeploymentVerification>true</skipDeploymentVerification>
             <properties>
+	      <ap_user>${env.ANYPOINT_USER}</ap_user>
+	      <ap_pass>${env.ANYPOINT_PASS}</ap_pass
               <anypoint.platform.analytics_base_uri>https://analytics-ingest.anypoint.mulesoft.com</anypoint.platform.analytics_base_uri>
               <anypoint.platform.platform_base_uri>https://anypoint.mulesoft.com/apiplatform</anypoint.platform.platform_base_uri>
               <anypoint.platform.coreservice_base_uri>https://anypoint.mulesoft.com/accounts</anypoint.platform.coreservice_base_uri>
