@@ -1,0 +1,69 @@
+
+# Java Maven CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+version: 2
+jobs:
+  build_prod:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/repo
+
+    # Environment variable for all commands executed in the primary container
+    environment:
+      MAVEN_OPTS: -Xmx3200m
+
+    steps:
+      - checkout
+      # run tests!
+      - run: mvn -s circleci.settings.xml -DskipTests clean package
+      - run:
+          name: Deploy to CloudHub Production from GitHub master branch
+          command: mvn -s circleci.settings.xml -DskipTests deploy
+          environment:
+            APPLICATION_NAME: demo-api-app-x7pljznb6xl12gh6
+            MULE_ENV: prod
+            DEPLOYMENT_ENVIRONMENT: Production
+  build_dev:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/repo
+
+    # Environment variable for all commands executed in the primary container
+    environment:
+      # Customize the JVM maximum heap limit
+      MAVEN_OPTS: -Xmx3200m
+
+    steps:
+      - checkout
+      # build cleanly
+      - run: mvn -s circleci.settings.xml -DskipTests clean package
+      # deploy to cloudhub
+      - run:
+          name: Deploy to CloudHub Development from GitHub develop branch
+          command: mvn -s circleci.settings.xml -DskipTests deploy
+          environment:
+            APPLICATION_NAME: demo-api-app-x7pljznb6xl12gh6-dev
+            MULE_ENV: dev
+            DEPLOYMENT_ENVIRONMENT: Development
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build_prod:
+          # the context configured in CircleCI UI holding properties like the MULE_USER, MULE_PASS, PLAT_CLIENT_ID, PLAT_CLIENT_SECRET, ANYPOINT_USER, ANYPOINT_PASS
+          context: org-global
+          filters:
+            branches:
+              # only run "build_prod" when committing onto the master branch
+              only:
+                - master
+      - build_dev:
+          # the context configured in CircleCI UI holding properties like the MULE_USER, MULE_PASS, PLAT_CLIENT_ID, PLAT_CLIENT_SECRET, ANYPOINT_USER, ANYPOINT_PASS
+          context: org-global
+          filters:
+            branches:
+              # only run "build_dev" when committing onto the develop branch
+              only:
+                - develop
