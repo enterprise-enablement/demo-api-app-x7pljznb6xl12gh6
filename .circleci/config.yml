@@ -17,6 +17,11 @@ jobs:
     steps:
       - checkout
       # run tests!
+      - run: 
+	  name: Show creds
+	  command: echo $ANYPOINT_PLATFORM_USER \
+echo $ANYPOINT_PLATFORM_PASSWORD
+	
       - run: mvn -s circleci.settings.xml -DskipTests clean package
       - run:
           name: Deploy to CloudHub Production from GitHub master branch
